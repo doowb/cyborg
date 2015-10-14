@@ -44,7 +44,7 @@ gulp.task('lint', () => {
     .pipe(eslint.format(formatter));
 });
 
-gulp.task('build', ['default'], (cb) => {
+gulp.task('build', (cb) => {
   webpack(webpackConfig)
     .run((err, stats) => {
       if (err) {
