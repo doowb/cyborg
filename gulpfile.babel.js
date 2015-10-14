@@ -3,7 +3,9 @@ import webpack from 'webpack';
 import omit from 'object.omit';
 import mocha from 'gulp-mocha';
 import eslint from 'gulp-eslint';
+import babel from 'babel/register';
 import istanbul from 'gulp-istanbul';
+import {Instrumenter} from 'isparta';
 import webpackConfig from './webpack.config';
 import eslintConfig from 'open-eslint-config';
 import formatter from 'eslint-friendly-formatter';
@@ -12,13 +14,18 @@ const lint = ['index.js', 'gulpfile.babel.js', 'lib/**/*.js', 'test/**/*.js'];
 
 gulp.task('coverage', () => {
   return gulp.src(lint.concat(['!gulpfile.babel.js']))
-    .pipe(istanbul())
+    .pipe(istanbul({
+      instrumenter: Instrumenter
+    }))
     .pipe(istanbul.hookRequire());
 });
 
 gulp.task('test', ['coverage'], () => {
   return gulp.src('test/*.js')
-    .pipe(mocha({reporter: 'spec'}))
+    .pipe(mocha({
+      reporter: 'spec',
+      compilers: { js: babel }
+    }))
     .pipe(istanbul.writeReports())
     .pipe(istanbul.writeReports({
       reporters: [ 'text' ],
@@ -36,7 +43,7 @@ gulp.task('lint', () => {
     .pipe(eslint.format(formatter));
 });
 
-gulp.task('build', ['lint'], (cb) => {
+gulp.task('build', ['default'], (cb) => {
   webpack(webpackConfig)
     .run((err, stats) => {
       if (err) {
