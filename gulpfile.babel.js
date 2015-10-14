@@ -43,7 +43,7 @@ gulp.task('build', ['lint'], (cb) => {
         console.error(err);
         return cb(err);
       }
-      // console.log(stats);
+      console.log(stats.toString());
       cb();
     });
 });
