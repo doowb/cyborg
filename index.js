@@ -17,6 +17,8 @@ function Cyborg(options) {
   }
   Base.call(this);
   this.options = options || {};
+  this.use(option);
+  this.use(plugin);
 }
 
 Base.extend(Cyborg);

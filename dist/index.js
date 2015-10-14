@@ -82,6 +82,8 @@ module.exports =
 	  }
 	  Base.call(this);
 	  this.options = options || {};
+	  this.use(_baseOptions2['default']);
+	  this.use(_basePlugins2['default']);
 	}
 	
 	Base.extend(Cyborg);
