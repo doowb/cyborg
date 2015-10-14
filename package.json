@@ -32,5 +32,10 @@
     "source-map-support": "^0.3.2",
     "through2": "^2.0.0",
     "webpack": "^1.12.0"
+  },
+  "dependencies": {
+    "base-methods": "^0.2.14",
+    "base-options": "^0.3.0",
+    "base-plugins": "^0.2.1"
   }
 }
