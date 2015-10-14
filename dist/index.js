@@ -47,6 +47,13 @@ module.exports =
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/*!
+	 * cyborg <https://github.com/jonschlinkert/cyborg>
+	 *
+	 * Copyright (c) 2015, Jon Schlinkert.
+	 * Licensed under the MIT License.
+	 */
+	
 	'use strict';
 	
 	var _interopRequireDefault = __webpack_require__(1)['default'];
@@ -55,16 +62,31 @@ module.exports =
 	  value: true
 	});
 	
-	var _libFoo = __webpack_require__(2);
+	var _baseMethods = __webpack_require__(2);
 	
-	var _libFoo2 = _interopRequireDefault(_libFoo);
+	var _baseMethods2 = _interopRequireDefault(_baseMethods);
 	
-	exports['default'] = function (msg) {
-	  return (0, _libFoo2['default'])(function () {
-	    return msg;
-	  });
-	};
+	var _basePlugins = __webpack_require__(3);
 	
+	var _basePlugins2 = _interopRequireDefault(_basePlugins);
+	
+	var _baseOptions = __webpack_require__(4);
+	
+	var _baseOptions2 = _interopRequireDefault(_baseOptions);
+	
+	var Base = _baseMethods2['default'].namespace('cache');
+	
+	function Cyborg(options) {
+	  if (!(this instanceof Cyborg)) {
+	    return new Cyborg(options);
+	  }
+	  Base.call(this);
+	  this.options = options || {};
+	}
+	
+	Base.extend(Cyborg);
+	
+	exports['default'] = Cyborg;
 	module.exports = exports['default'];
 
 /***/ },
@@ -85,17 +107,19 @@ module.exports =
 /* 2 */
 /***/ function(module, exports) {
 
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	exports['default'] = function (fn) {
-	  return 'foo ' + fn();
-	};
-	
-	module.exports = exports['default'];
+	module.exports = require("base-methods");
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = require("base-plugins");
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	module.exports = require("base-options");
 
 /***/ }
 /******/ ]);
