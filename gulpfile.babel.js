@@ -12,9 +12,8 @@ import formatter from 'eslint-friendly-formatter';
 
 const lint = ['index.js', 'gulpfile.babel.js', 'lib/**/*.js'];
 
-gulp.task('coverage', () => {
+gulp.task('coverage', ['lint'], () => {
   return gulp.src(lint.concat(['!gulpfile.babel.js']))
-    .on('data', console.log)
     .pipe(istanbul({
       instrumenter: Instrumenter,
       includeUntested: true
@@ -57,4 +56,4 @@ gulp.task('build', ['default'], (cb) => {
     });
 });
 
-gulp.task('default', ['lint', 'test']);
+gulp.task('default', ['test']);
