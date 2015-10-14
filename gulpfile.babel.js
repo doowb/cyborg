@@ -10,12 +10,14 @@ import webpackConfig from './webpack.config';
 import eslintConfig from 'open-eslint-config';
 import formatter from 'eslint-friendly-formatter';
 
-const lint = ['index.js', 'gulpfile.babel.js', 'lib/**/*.js', 'test/**/*.js'];
+const lint = ['index.js', 'gulpfile.babel.js', 'lib/**/*.js'];
 
 gulp.task('coverage', () => {
   return gulp.src(lint.concat(['!gulpfile.babel.js']))
+    .on('data', console.log)
     .pipe(istanbul({
-      instrumenter: Instrumenter
+      instrumenter: Instrumenter,
+      includeUntested: true
     }))
     .pipe(istanbul.hookRequire());
 });
@@ -38,7 +40,7 @@ gulp.task('lint', () => {
   rules = omit(rules, (val, key) => {
     return key.indexOf('react/') === -1;
   });
-  return gulp.src(lint)
+  return gulp.src(lint.concat(['test/*.js']))
     .pipe(eslint({rules, configFile: './eslint-config.json'}))
     .pipe(eslint.format(formatter));
 });
