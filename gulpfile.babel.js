@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 import webpack from 'webpack';
-import omit from 'object.omit';
 import mocha from 'gulp-mocha';
 import eslint from 'gulp-eslint';
 import babel from 'babel/register';
@@ -35,10 +34,7 @@ gulp.task('test', ['coverage'], () => {
 });
 
 gulp.task('lint', () => {
-  let {rules} = eslintConfig({isDev: true, lintEnv: 'build'});
-  rules = omit(rules, (val, key) => {
-    return key.indexOf('react/') === -1;
-  });
+  let {rules} = eslintConfig({isDev: true, lintEnv: 'build', react: false});
   return gulp.src(lint.concat(['test/*.js']))
     .pipe(eslint({rules, configFile: './eslint-config.json'}))
     .pipe(eslint.format(formatter));
