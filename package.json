@@ -20,7 +20,6 @@
     "babel-runtime": "^5.8.24",
     "eslint": "^1.4.3",
     "eslint-friendly-formatter": "^1.1.0",
-    "eslint-plugin-react": "^3.5.1",
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.0.0",
     "gulp-istanbul": "^0.10.1",
