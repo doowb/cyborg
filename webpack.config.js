@@ -33,7 +33,7 @@ module.exports =  {
   entry: entry,
   output: {
     path: join(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: 'main.js',
     libraryTarget: 'commonjs2'
   },
   module: {
