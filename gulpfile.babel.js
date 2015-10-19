@@ -1,11 +1,9 @@
 import gulp from 'gulp';
-import webpack from 'webpack';
 import mocha from 'gulp-mocha';
 import eslint from 'gulp-eslint';
 import babel from 'babel/register';
 import istanbul from 'gulp-istanbul';
 import {Instrumenter} from 'isparta';
-import webpackConfig from './webpack.config';
 import eslintConfig from 'open-eslint-config';
 import formatter from 'eslint-friendly-formatter';
 
@@ -38,18 +36,6 @@ gulp.task('lint', () => {
   return gulp.src(lint.concat(['test/*.js']))
     .pipe(eslint(config))
     .pipe(eslint.format(formatter));
-});
-
-gulp.task('build', (cb) => {
-  webpack(webpackConfig)
-    .run((err, stats) => {
-      if (err) {
-        console.error(err);
-        return cb(err);
-      }
-      console.log(stats.toString());
-      cb();
-    });
 });
 
 gulp.task('default', ['test']);

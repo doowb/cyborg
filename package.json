@@ -9,15 +9,16 @@
   "license": "MIT",
   "main": "dist/main.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "bundle": "browserify -d -e index.js -t [ babelify --sourceMapRelative . ] --node --standalone cyborg -o ./dist/main.js"
   },
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.24",
     "babel-eslint": "^4.1.2",
-    "babel-loader": "^5.3.2",
-    "babel-plugin-rewire": "^0.1.13",
     "babel-runtime": "^5.8.24",
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
     "eslint": "^1.4.3",
     "eslint-friendly-formatter": "^1.1.0",
     "gulp": "^3.9.0",
@@ -25,12 +26,9 @@
     "gulp-istanbul": "^0.10.1",
     "gulp-mocha": "^2.1.3",
     "isparta": "^3.1.0",
-    "json-loader": "^0.5.2",
     "mocha": "^2.2.5",
-    "open-eslint-config": "git+ssh://git@github.com/doowb/open-eslint-config.git",
-    "source-map-support": "^0.3.2",
-    "through2": "^2.0.0",
-    "webpack": "^1.12.0"
+    "open-eslint-config": "doowb/open-eslint-config",
+    "through2": "^2.0.0"
   },
   "dependencies": {
     "base-methods": "^0.2.14",
