@@ -7,7 +7,7 @@ import {Instrumenter} from 'isparta';
 import eslintConfig from 'open-eslint-config';
 import formatter from 'eslint-friendly-formatter';
 
-const lint = ['index.js', 'gulpfile.babel.js', 'lib/**/*.js'];
+const lint = ['gulpfile.babel.js', 'src/**/*.js'];
 
 gulp.task('coverage', ['lint'], () => {
   return gulp.src(lint.concat(['!gulpfile.babel.js']))

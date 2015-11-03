@@ -7,10 +7,13 @@
     "type": "git"
   },
   "license": "MIT",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "gulp test",
-    "bundle": "browserify -d -e index.js -t [ babelify --sourceMapRelative . ] --node --standalone cyborg -o ./dist/main.js"
+    "build": "babel src --out-dir dist"
   },
   "devDependencies": {
     "babel": "^5.8.23",

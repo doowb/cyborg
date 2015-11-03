@@ -1,6 +1,6 @@
 
 import assert from 'assert';
-import Cyborg from '../index';
+import Cyborg from '../src';
 
 describe('cyborg', () => {
   it('should create an instance', () => {
