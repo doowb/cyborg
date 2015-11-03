@@ -7,9 +7,9 @@
     "type": "git"
   },
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "index.js",
   "files": [
-    "dist"
+    "index.js"
   ],
   "scripts": {
     "test": "gulp test",

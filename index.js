@@ -5,11 +5,11 @@
  * Licensed under the MIT License.
  */
 
-import base from 'base-methods';
-import plugin from 'base-plugins';
-import option from 'base-options';
+var base = require('base-methods');
+var plugin = require('base-plugins');
+var option = require('base-options');
 
-const Base = base.namespace('cache');
+var Base = base.namespace('cache');
 
 function Cyborg(options) {
   if (!(this instanceof Cyborg)) {
@@ -23,4 +23,4 @@ function Cyborg(options) {
 
 Base.extend(Cyborg);
 
-export default Cyborg;
+module.exports = Cyborg;
