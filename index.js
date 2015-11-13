@@ -6,8 +6,7 @@
  */
 
 var base = require('base-methods');
-var plugin = require('base-plugins');
-var option = require('base-options');
+var utils = require('./lib/utils');
 
 var Base = base.namespace('cache');
 
@@ -17,8 +16,9 @@ function Cyborg(options) {
   }
   Base.call(this);
   this.options = options || {};
-  this.use(option);
-  this.use(plugin);
+  this.use(utils.use);
+  this.use(utils.option());
+  this.use(utils.store('global', {cwd: '~/.cyborg/.datastore'}));
 }
 
 Base.extend(Cyborg);

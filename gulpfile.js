@@ -6,7 +6,7 @@ var formatter = require('eslint-friendly-formatter');
 
 var lint = ['gulpfile.js', 'index.js', 'lib/**/*.js'];
 
-gulp.task('coverage', function() {
+gulp.task('coverage', ['lint'], function() {
   return gulp.src(lint.concat(['!gulpfile.js']))
     .pipe(istanbul({
       includeUntested: true
